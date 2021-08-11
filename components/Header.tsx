@@ -1,23 +1,23 @@
 import React, { FC } from "react";
-import { HomeIcon } from "@heroicons/react/outline";
+import { headerItems } from "../data";
 import Image from "next/image";
 import HeaderItem from "./HeaderItem";
 
-const headerItems = [
-  { title: "HOME", icon: HomeIcon },
-  { title: "HOME", icon: HomeIcon },
-  { title: "HOME", icon: HomeIcon },
-];
-
 const Header: FC = () => {
   return (
-    <header>
-      <div>
+    <header className="flex flex-col sm:flex-row m-5 justify-between items-center h-auto">
+      <Image
+        className="object-contain"
+        src="/logo.png"
+        alt="Hulu Logo"
+        width={200}
+        height={100}
+      />
+      <div className="flex flex-grow justify-evenly max-w-2xl">
         {headerItems.map(({ title, icon }) => (
           <HeaderItem key={title} title={title} Icon={icon} />
         ))}
       </div>
-      <Image src="/logo.png" alt="Hulu Logo" width={200} height={100} />
     </header>
   );
 };

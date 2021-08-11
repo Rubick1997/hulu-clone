@@ -1,8 +1,29 @@
+import { GetServerSideProps, GetStaticProps } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import { FC } from "react";
 import Header from "../components/Header";
+import Nav from "../components/Nav";
+import Results from "../components/Results";
+import requests, { rowsData } from "../utils/requests";
 
-export default function Home() {
+export type ContentType = {
+  id: number;
+  media_type: string;
+  poster_path: string;
+  release_date: string;
+  first_air_date: string;
+  title: string;
+  name: string;
+  vote_count: number;
+  backdrop_path: string;
+  overview: string;
+};
+
+type RequestType = {
+  [key: string]: { fetchUrl: string };
+};
+
+const Home: FC<{ results: ContentType[] }> = ({ results }) => {
   return (
     <div>
       <Head>
@@ -11,6 +32,25 @@ export default function Home() {
         <link rel="icon" href="/icon.png" />
       </Head>
       <Header />
+      <Nav />
+      <Results results={results} />
     </div>
   );
-}
+};
+export default Home;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const genre = context.query.genre as string;
+
+  const request = await fetch(
+    `https://api.themoviedb.org/3${
+      rowsData[genre]?.fetchUrl || requests.fetchTrending
+    }`
+  ).then((res) => res.json());
+
+  return {
+    props: {
+      results: request.results,
+    },
+  };
+};
