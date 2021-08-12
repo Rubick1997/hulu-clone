@@ -17,10 +17,8 @@ export type ContentType = {
   vote_count: number;
   backdrop_path: string;
   overview: string;
-};
-
-type RequestType = {
-  [key: string]: { fetchUrl: string };
+  homepage: string;
+  tagline: string;
 };
 
 const Home: FC<{ results: ContentType[] }> = ({ results }) => {

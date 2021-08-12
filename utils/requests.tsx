@@ -39,37 +39,31 @@ export const rowsData: RequestType = {
     media_type: "movie",
   },
   fetchHorrorMovies: {
-    id: 6,
     title: "Horror Movies",
     fetchUrl: requests.fetchHorrorMovies,
     media_type: "movie",
   },
   fetchRomanceMovies: {
-    id: 7,
     title: "Romance Movies",
     fetchUrl: requests.fetchRomanceMovies,
     media_type: "movie",
   },
   fetchDocumentaries: {
-    id: 8,
     title: "Documentaries",
     fetchUrl: requests.fetchDocumentaries,
     media_type: "movie",
   },
   fetchHuluCurrentStreams: {
-    id: 10,
     title: "Hulu Current Streams",
     fetchUrl: requests.fetchHuluCurrentStreams,
-    media_type: "movie",
+    media_type: "tv",
   },
   fetchNetflixOriginals: {
-    id: 1,
     title: "NETFLIX ORIGINALS",
     fetchUrl: requests.fetchNetflixOriginals,
     media_type: "tv",
   },
   fetchDisneyPlusOriginals: {
-    id: 9,
     title: "DISNEY PlUS ORIGINALS",
     fetchUrl: requests.fetchDisneyPlusOriginals,
     media_type: "tv",
