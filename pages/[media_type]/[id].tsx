@@ -7,7 +7,6 @@ import { ContentType } from "..";
 import { fullDate } from "../../utils/helpers";
 
 const Details: FC<{ data: ContentType }> = ({ data }) => {
-  console.log(data);
   return (
     <div className="p-10 flex flex-wrap sm:flex-nowrap justify-center">
       <div className="flex-none w-60 relative">

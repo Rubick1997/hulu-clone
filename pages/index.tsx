@@ -18,6 +18,7 @@ export type ContentType = {
   backdrop_path: string;
   overview: string;
   homepage: string;
+  vote_average: number;
   tagline: string;
 };
 
