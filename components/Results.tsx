@@ -16,8 +16,9 @@ import { useRouter } from "next/dist/client/router";
 
 const Results: FC<{ results: ContentType[] }> = ({ results }) => {
   const router = useRouter();
-  const passMedia = results as any;
-  const media = router.query.media_type || passMedia.media_type;
+  const media = router.query.media_type;
+  const trendingFetch = results as any;
+  const isTrending = router.query.genre;
 
   return (
     <div className="flex flex-col align-center ">
@@ -39,7 +40,15 @@ const Results: FC<{ results: ContentType[] }> = ({ results }) => {
               horizontal={true}
               vertical={true}
             />
-            <XAxis dataKey={media === "movie" ? "title" : "name"} />
+            <XAxis
+              dataKey={
+                isTrending === "fetchTrending"
+                  ? "title" || "name"
+                  : media === "movie"
+                  ? "title"
+                  : "name"
+              }
+            />
             <YAxis />
             <Tooltip cursor={{ fill: "rgba(206, 206, 206, 0.2)" }} />
             <Bar dataKey="vote_average" fill="#66aa33" />
